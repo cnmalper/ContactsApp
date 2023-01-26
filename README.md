@@ -1,6 +1,10 @@
 # ContactsApp
 Built a Contacts App today.
 
+# How does the app work?
+
+
+
 # iPhone Screenshots
 <p><img align="left" src="https://github.com/cnmalper/ContactsApp/blob/main/1.png" width="300" height="650"/></p>
 <p><img align="center" src="https://github.com/cnmalper/ContactsApp/blob/main/2.png" width="300" height="650"/></p>
