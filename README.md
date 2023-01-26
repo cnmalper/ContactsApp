@@ -1,7 +1,7 @@
 # ContactsApp
 Built a Contacts App today. I used UIKit, CoreData and MapKit.
 
-# How does the app work
+# How does the app work? 
 
 When the user opened the app for the first time, the user will see a TableView, if there's no any contact that he/she saved he can click the "+" button to add a new contact. 
 
