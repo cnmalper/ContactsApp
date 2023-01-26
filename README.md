@@ -10,7 +10,7 @@ If the user saved any contact before, the user will see contact's first and last
 ## We have 3 buttons on the screen, "Call, SMS and Maps"
 
 - Click the Call button, the user can call the contact,
-- Click the SMS button, messages app will be open and the user can send an SMS to the contact.
+- Click the SMS button, messages app will open and the user can send an SMS to the contact.
 - Click the Maps button, the user can see contact's location that as saved.
 
 # iPhone Screenshots
