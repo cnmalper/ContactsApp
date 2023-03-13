@@ -3,7 +3,7 @@
 //  ContactsApp
 //
 //  Created by Alper Canımoğlu on 6.01.2023.
-//
+//  Used pushViewController instead of Segue.
 
 import UIKit
 import CoreData
