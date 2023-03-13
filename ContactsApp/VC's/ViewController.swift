@@ -4,6 +4,7 @@
 //
 //  Created by Alper Canımoğlu on 6.01.2023.
 //  Used pushViewController instead of Segue.
+//  New Contact adding button has been set programmatically.
 
 import UIKit
 import CoreData
