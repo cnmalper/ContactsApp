@@ -11,13 +11,13 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var myColorList = [UIColor.red, UIColor.brown, UIColor.blue, UIColor.cyan, UIColor.orange, UIColor.darkGray, UIColor.green, UIColor.systemPink, UIColor.purple, UIColor.magenta, UIColor.yellow]
+    private var myColorList = [UIColor.red, UIColor.brown, UIColor.blue, UIColor.cyan, UIColor.orange, UIColor.darkGray, UIColor.green, UIColor.systemPink, UIColor.purple, UIColor.magenta, UIColor.yellow]
     private var contactFirstnameArray = [String]()
-    var contactLastnameArray = [String]()
-    var contactIdArray = [UUID]()
+    private var contactLastnameArray = [String]()
+    private var contactIdArray = [UUID]()
     
-    var selectedContact = ""
-    var selectedContactID : UUID?
+    private var selectedContact = ""
+    private var selectedContactID : UUID?
     
     @IBOutlet weak var tableView: UITableView!
     
