@@ -10,7 +10,7 @@ import MapKit
 
 class FourthViewController__MapKit_: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView!
     
     override func viewDidLoad()
     {

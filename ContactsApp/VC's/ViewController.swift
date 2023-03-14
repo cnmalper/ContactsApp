@@ -37,9 +37,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func addNewContactButton(_ sender: Any) {
-
-        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondVC") as! SecondViewController
-        navigationController?.pushViewController(secondVC, animated: true)
+        
+        if let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondVC") as? SecondViewController {
+            navigationController?.pushViewController(secondVC, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,40 +71,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contacts")
-            let idString = contactIdArray[indexPath.row].uuidString
-            fetchRequest.predicate = NSPredicate(format: "id = %@", idString)
-            fetchRequest.returnsDistinctResults = false
-            
-            do{
-                let results = try context.fetch(fetchRequest)
-                if results.count > 0 {
-                    for result in results as! [NSManagedObject] {
-                        if let id = result.value(forKey: "id") as? UUID {
-                            if id == contactIdArray[indexPath.row] {
-                                
-                                context.delete(result)
-                                contactFirstnameArray.remove(at: indexPath.row)
-                                contactLastnameArray.remove(at: indexPath.row)
-                                contactIdArray.remove(at: indexPath.row)
-                                self.tableView.reloadData()
-                                
-                                do{
-                                    try context.save()
-                                }catch{
-                                    Common.showAlert(errorTitle: "Error!", errorMessage: "Data could not deleted!", vc: self)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+                let context = appDelegate.persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contacts")
+                let idString = contactIdArray[indexPath.row].uuidString
+                fetchRequest.predicate = NSPredicate(format: "id = %@", idString)
+                fetchRequest.returnsDistinctResults = false
+                
+                do{
+                    let results = try context.fetch(fetchRequest)
+                    if results.count > 0 {
+                        for result in results as! [NSManagedObject] {
+                            if let id = result.value(forKey: "id") as? UUID {
+                                if id == contactIdArray[indexPath.row] {
+                                    
+                                    context.delete(result)
+                                    contactFirstnameArray.remove(at: indexPath.row)
+                                    contactLastnameArray.remove(at: indexPath.row)
+                                    contactIdArray.remove(at: indexPath.row)
+                                    self.tableView.reloadData()
+                                    
+                                    do{
+                                        try context.save()
+                                    }catch{
+                                        Common.showAlert(errorTitle: "Error!", errorMessage: "Data could not deleted!", vc: self)
+                                    }
+                                    break
                                 }
-                                break
                             }
                         }
                     }
+                }catch{
+                    Common.showAlert(errorTitle: "Error!", errorMessage: "Error on your Request!", vc: self)
                 }
-            }catch{
-                Common.showAlert(errorTitle: "Error!", errorMessage: "Error on your Request!", vc: self)
             }
-        }
+            }
     }
     // getContact Function
     
