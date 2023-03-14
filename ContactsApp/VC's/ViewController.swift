@@ -59,12 +59,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thirdVC = storyboard?.instantiateViewController(withIdentifier: "ThirdVC") as! ThirdViewController
-        navigationController?.pushViewController(thirdVC, animated: true)
-        self.selectedContact = contactFirstnameArray[indexPath.row]
-        self.selectedContactID = contactIdArray[indexPath.row]
-        thirdVC.chosenContact = selectedContact
-        thirdVC.chosenContactID = selectedContactID
+        if let thirdVC = storyboard?.instantiateViewController(withIdentifier: "ThirdVC") as? ThirdViewController{
+            navigationController?.pushViewController(thirdVC, animated: true)
+            self.selectedContact = contactFirstnameArray[indexPath.row]
+            self.selectedContactID = contactIdArray[indexPath.row]
+            thirdVC.chosenContact = selectedContact
+            thirdVC.chosenContactID = selectedContactID
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
